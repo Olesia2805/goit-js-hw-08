@@ -67,31 +67,31 @@ const images = [
 const arrayImg = [];
 
 for (const img of images) {
-    const galleryItem = document.createElement("li");
-    galleryItem.classList.add("gallery-item");
-    
-    const galleryLink = document.createElement("a");
-    galleryLink.classList.add("gallery-link");
-    galleryLink.setAttribute("href", img.original)
+  const galleryItem = document.createElement('li');
+  galleryItem.classList.add('gallery-item');
 
-    const galleryImage = document.createElement("img");
-    galleryImage.classList.add("gallery-image");
-    galleryImage.setAttribute("src", img.preview);
-    galleryImage.dataset.source = img.original;
-    galleryImage.setAttribute("alt", img.description);
+  const galleryLink = document.createElement('a');
+  galleryLink.classList.add('gallery-link');
+  galleryLink.setAttribute('href', img.original);
 
-    galleryLink.appendChild(galleryImage);
-    galleryItem.appendChild(galleryLink);
+  const galleryImage = document.createElement('img');
+  galleryImage.classList.add('gallery-image');
+  galleryImage.setAttribute('src', img.preview);
+  galleryImage.dataset.source = img.original;
+  galleryImage.setAttribute('alt', img.description);
 
-    console.log(galleryItem);
+  galleryLink.appendChild(galleryImage);
+  galleryItem.appendChild(galleryLink);
 
-    arrayImg.push(galleryItem.outerHTML);
+  console.log(galleryItem);
+
+  arrayImg.push(galleryItem.outerHTML);
 }
 
 const positionSelect = document.querySelector('.gallery');
 
 positionSelect.insertAdjacentHTML('afterbegin', arrayImg.join(' '));
 
-positionSelect.addEventListener("click", event => {
-	event.preventDefault();
+positionSelect.addEventListener('click', event => {
+  event.preventDefault();
 });
