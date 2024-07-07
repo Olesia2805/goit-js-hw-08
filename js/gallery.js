@@ -95,3 +95,9 @@ positionGallery.addEventListener('click', event => {
     basicLightboxInstance.show();
   }
 });
+
+positionGallery.addEventListener('mouseover', event => {
+  if (event.target !== event.currentTarget) {
+    event.target.style.cursor = 'zoom-in';
+  }
+});
