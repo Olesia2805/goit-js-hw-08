@@ -64,9 +64,7 @@ const images = [
   },
 ];
 
-const arrayImg = [];
-
-for (const img of images) {
+function createCard(img) {
   const galleryItem = document.createElement('li');
   galleryItem.classList.add('gallery-item');
 
@@ -83,14 +81,14 @@ for (const img of images) {
   galleryLink.appendChild(galleryImage);
   galleryItem.appendChild(galleryLink);
 
-  console.log(galleryItem);
-
-  arrayImg.push(galleryItem.outerHTML);
+  return galleryItem.outerHTML;
 }
+
+const cardsImg = images.map(card => createCard(card))
 
 const positionSelect = document.querySelector('.gallery');
 
-positionSelect.insertAdjacentHTML('afterbegin', arrayImg.join(' '));
+positionSelect.insertAdjacentHTML('afterbegin', cardsImg.join(' '));
 
 positionSelect.addEventListener('click', event => {
   event.preventDefault();
