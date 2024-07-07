@@ -75,15 +75,18 @@ const createCard = img => {
         alt="${img.description}"
       />
     </a>
-  </li>`
+  </li>`;
 };
 
 const cardsImg = images.map(card => createCard(card));
 
-const positionSelect = document.querySelector('.gallery');
+const positionGallery = document.querySelector('.gallery');
 
-positionSelect.insertAdjacentHTML('afterbegin', cardsImg.join(''));
+positionGallery.insertAdjacentHTML('afterbegin', cardsImg.join(''));
 
-positionSelect.addEventListener('click', event => {
+positionGallery.addEventListener('click', event => {
   event.preventDefault();
+  if (event.target !== event.currentTarget) {
+    console.log(event.target.dataset.source);
+  }
 });
