@@ -87,6 +87,11 @@ positionGallery.insertAdjacentHTML('afterbegin', cardsImg.join(''));
 positionGallery.addEventListener('click', event => {
   event.preventDefault();
   if (event.target !== event.currentTarget) {
-    console.log(event.target.dataset.source);
+    const bigPhoto = event.target.dataset.source;
+    const basicLightboxInstance = basicLightbox.create(
+      `<img src="${bigPhoto}" alt="${event.target.alt}"/>`
+    );
+
+    basicLightboxInstance.show();
   }
 });
