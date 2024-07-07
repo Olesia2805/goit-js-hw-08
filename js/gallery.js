@@ -64,31 +64,25 @@ const images = [
   },
 ];
 
-function createCard(img) {
-  const galleryItem = document.createElement('li');
-  galleryItem.classList.add('gallery-item');
+const createCard = img => {
+  return `
+  <li class="gallery-item">
+    <a class="gallery-link" href="${img.original}">
+      <img
+        class="gallery-image"
+        src="${img.preview}"
+        data-source="${img.original}"
+        alt="${img.description}"
+      />
+    </a>
+  </li>`
+};
 
-  const galleryLink = document.createElement('a');
-  galleryLink.classList.add('gallery-link');
-  galleryLink.setAttribute('href', img.original);
-
-  const galleryImage = document.createElement('img');
-  galleryImage.classList.add('gallery-image');
-  galleryImage.setAttribute('src', img.preview);
-  galleryImage.dataset.source = img.original;
-  galleryImage.setAttribute('alt', img.description);
-
-  galleryLink.appendChild(galleryImage);
-  galleryItem.appendChild(galleryLink);
-
-  return galleryItem.outerHTML;
-}
-
-const cardsImg = images.map(card => createCard(card))
+const cardsImg = images.map(card => createCard(card));
 
 const positionSelect = document.querySelector('.gallery');
 
-positionSelect.insertAdjacentHTML('afterbegin', cardsImg.join(' '));
+positionSelect.insertAdjacentHTML('afterbegin', cardsImg.join(''));
 
 positionSelect.addEventListener('click', event => {
   event.preventDefault();
